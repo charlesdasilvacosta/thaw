@@ -66,6 +66,9 @@ public class Database {
 
     }
 
+    /*
+     * Must change id to user token
+     */
     public void addChannelTable(String channelName, Integer ownerId) throws SQLException {
         StringBuilder requestInsertChannel = new StringBuilder();
         StringBuilder requestCreateTable = new StringBuilder();
@@ -115,7 +118,6 @@ public class Database {
         return seq;
     }
 
-    //Modify to use token
     public void addMessage(String token, Integer channelId, String message) throws SQLException {
         StringBuilder requestInsertMessage = new StringBuilder();
 
@@ -177,6 +179,9 @@ public class Database {
     }
 
 
+    /*
+     * Unused method, must delete it after
+     */
     private String retrieveUserName(int id) throws SQLException {
         ResultSet resultSet;
         String buffer;
