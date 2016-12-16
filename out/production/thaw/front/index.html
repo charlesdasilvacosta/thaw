@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="framework/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="framework/angular.min.js"></script>
+<script type="text/javascript" src="framework/angular-resource.min.js"></script>
+<script src="http://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js"></script>
+<script src="framework/vertx-eventbus.js"></script>
+
+
+<body ng-app="chat" ng-controller="channelCtrl">
+	<div class="login-page" ng-show="showLogin" ng-submit="connection()">
+			<form class="loginform">
+				<input ng-model="name_login" type="text" placeholder="Username" required>
+				<input ng-model="password_login" type="password" placeholder="Password" required>
+				<button>login</button>
+			</form>
+			<div id="filtre"></div>
+	</div>
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper"  data-ng-init="init()">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand ">
+                <a href id="pseudonyme" class="dropdown-toggle" data-toggle="dropdown" type="button">
+                    <span style="color:white;">Pseudonyme<span class="caret"></span></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href>Disconnect</a></li>
+                </ul>
+            </li>
+            <li data-toggle="modal" data-target="#modalNewChannel"><a href class="addchannel">CHANNELS ({{countChannels}})<span class="glyphicon glyphicon-plus float-xs-right"></span></a>
+            </li>
+
+            <!--<li>
+                <a href="#" class="channel active">Channel 1</a>
+            </li>-->
+            <li ng-repeat="channel in channels" ng-class="{active: isActive(channel)}"><a href class="channel" ng-click="choiceChannel(channel)">{{channel.name}}</a><a href class="glyphicon glyphicon-remove-sign"></a></li>
+        </ul>
+    </div>
+    <div id="button_menu"><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-chevron-right"
+                                                                        style="color:#A52A2A;"></span></a></div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 titlechannel">
+                    <div class="col-xs-12 col-sm-6 col-md-8 title">{{title}}</div>
+                    <div class="input-group col-xs-12 col-sm-6 col-md-4">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-addon">
+							<button type="submit">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+                    </div>
+                </div>
+            </div>
+            <!--<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>-->
+
+            <div id="list_message">
+
+                <div class="row" ng-repeat="message in messages">
+                    <div class="col-xs-12">
+                        <span class="author">{{message.author}}</span> <span class="date">{{message.post_date}}</span>
+                        <p>{{message.message}}</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <form id="zonemessage" ng-submit="newMessage()"
+                  class=" col-xs-12 input-group">
+                <input type="text" placeholder="Type your message here..." class="form-control " autocomplete="off"
+                       ng-model="user_message" maxlength="140">
+                <span class="input-group-btn"><input type="submit" value="Send" class="btn btn-danger"></span>
+
+            </form>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalNewChannel"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Create a new channel</h4>
+                </div>
+                <form ng-submit="newChannel()">
+                    <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="name_channel" class="form-control-label">Name:</label>
+                                <input type="text" class="form-control" id="name_channel" ng-model="name_channel" required pattern="[a-zA-Z]{1,25}">
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-danger">Create</button>
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="framework/bootstrap/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
