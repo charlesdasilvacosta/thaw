@@ -16,16 +16,6 @@ public class Main {
         Certificate cert = new Certificate(Paths.get("ressources/thawkeystore.jks"), "qwenty");
         Server serv = new Server(database, cert, 4443);
 
-        int id = -1;
-
-        try {
-            id = database.retrieveIdByToken("717fe34eb651c28a3bdfe44f863cdcccbf343f33");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(id);
-
         serv.getVertx().deployVerticle(serv);
     }
 }

@@ -53,12 +53,11 @@ public class Database {
         ResultSet requestResult;
 
         connect();
-        requestResult = statement.executeQuery("select * from users");
+        requestResult = statement.executeQuery(SQLRequest.listUsers());
         while (requestResult.next())
             allUsers.add(new JsonObject()
                     .put("id", requestResult.getInt("id_user"))
-                    .put("name", requestResult.getString("name"))
-                    .put("login", requestResult.getString("login")));
+                    .put("name", requestResult.getString("name")));
         disconnect();
 
 
@@ -70,25 +69,8 @@ public class Database {
      * Must change id to user token
      */
     public void addChannelTable(String channelName, Integer ownerId) throws SQLException {
-        StringBuilder requestInsertChannel = new StringBuilder();
-        StringBuilder requestCreateTable = new StringBuilder();
-
-        requestInsertChannel.append("insert into channels ")
-                .append("(name, owner_id) values ")
-                .append("( \"ch_")
-                .append(channelName)
-                .append("\",")
-                .append(ownerId)
-                .append(")");
-
-        requestCreateTable.append("CREATE TABLE \"ch_").append(channelName).append("\" ( ")
-                .append("author_id integer not null,")
-                .append("post_date datetime not null,")
-                .append("message varchar(140) not null,")
-                .append("foreign key (author_id) references users(id_users))");
-
-        sendRequest(requestInsertChannel.toString());
-        sendRequest(requestCreateTable.toString());
+        sendRequest(SQLRequest.addChannelToChannelsTable(channelName, ownerId));
+        sendRequest(SQLRequest.addChannelTable(channelName));
 
     }
 
@@ -97,7 +79,7 @@ public class Database {
         ResultSet requestResult;
 
         connect();
-        requestResult = statement.executeQuery("select * from channels");
+        requestResult = statement.executeQuery(SQLRequest.listChannels());
         while (requestResult.next()) {
             allChannels.add(new JsonObject()
                     .put("id_channel", requestResult.getInt("id_channel"))
@@ -108,11 +90,14 @@ public class Database {
         return allChannels;
     }
 
+    /*
+     * Useful to get id of created channel
+     */
     public int getSeqChannel() throws SQLException {
         int seq;
         ResultSet requestResult;
         connect();
-        requestResult = statement.executeQuery("select seq from sqlite_sequence where name=\"channels\"");
+        requestResult = statement.executeQuery(SQLRequest.getSeqChanbnel());
         seq = requestResult.getInt("seq");
         disconnect();
         return seq;
@@ -121,13 +106,12 @@ public class Database {
     public void addMessage(String token, Integer channelId, String message) throws SQLException {
         StringBuilder requestInsertMessage = new StringBuilder();
 
-        requestInsertMessage.append("insert into ").append(retrieveChannelName(channelId))
+        /*requestInsertMessage.append("insert into ").append(retrieveChannelName(channelId))
                 .append(" values")
                 .append("(").append(retrieveIdByToken(token)).append(",").append("datetime(CURRENT_TIMESTAMP,'LOCALTIME')").append(",\"").append(message).append("\")");
+           */
 
-        System.out.println(requestInsertMessage);
-
-        sendRequest(requestInsertMessage.toString());
+        sendRequest(SQLRequest.addMessage(retrieveIdByToken(token),retrieveChannelName(channelId),message));
     }
 
     public List<JsonObject> listMessagesByChannelId(Integer channelId) throws SQLException {
@@ -137,7 +121,7 @@ public class Database {
 
         connect();
 
-        requestResult = statement.executeQuery("select * from " + channelName);
+        requestResult = statement.executeQuery(SQLRequest.listMessageByChannel(channelName));
         while (requestResult.next()) {
             allMessages.add(new JsonObject()
                     .put("author_id", requestResult.getInt("author_id"))
@@ -153,14 +137,7 @@ public class Database {
     public void addNewUser(String name, String login, String password) throws SQLException {
         StringBuilder requestCreateUser = new StringBuilder();
 
-        requestCreateUser.append("insert into users ")
-                .append("(name, login, password, token) values ")
-                .append("(\"").append(name).append("\",")
-                .append("\"").append(login).append("\",")
-                .append("\"").append(password).append("\",")
-                .append("\"").append(SHA1.hash(RandonString.randomString())).append("\")");
-
-        sendRequest(requestCreateUser.toString());
+        sendRequest(SQLRequest.addUser(name, login, password, SHA1.hash(RandonString.randomString())));
 
     }
 
@@ -169,9 +146,8 @@ public class Database {
      */
     public JsonObject connectUser(String login, String password) throws SQLException {
         String newToken = SHA1.hash(RandonString.randomString());
-        if(userExist(login,password)) {
-            System.out.println("test");
-            sendRequest("update users set token = \"" + newToken + "\" where login = \"" + login + "\" and password = \"" + password + "\"");
+        if (userExist(login, password)) {
+            sendRequest(SQLRequest.connectUser(login,password,newToken));
             return new JsonObject().put("token", newToken);
         }
         return new JsonObject().put("token", "null");
@@ -192,15 +168,14 @@ public class Database {
         return buffer;
     }
 
-    
 
-    private boolean userExist(String login, String password) throws SQLException{
+    private boolean userExist(String login, String password) throws SQLException {
         ResultSet resultSet;
         boolean flag = false;
         connect();
-        resultSet = statement.executeQuery("select login, password from users where login = \"" + login + "\" and password = \"" + password + "\"");
-        while(resultSet.next()){
-            if(login.equals(resultSet.getString("login")) && password.equals(resultSet.getString("password"))){
+        resultSet = statement.executeQuery(SQLRequest.userExist(login,password));
+        while (resultSet.next()) {
+            if (login.equals(resultSet.getString("login")) && password.equals(resultSet.getString("password"))) {
                 flag = true;
             }
         }
@@ -212,21 +187,21 @@ public class Database {
         ResultSet resultSet;
         String buffer;
         connect();
-        resultSet = statement.executeQuery("select name from channels where id_channel = " + id);
+        resultSet = statement.executeQuery(SQLRequest.retrieveChannelName(id));
         buffer = resultSet.getString("name");
         disconnect();
         return buffer;
     }
 
-    public int retrieveIdByToken(String token) throws SQLException{
+    public int retrieveIdByToken(String token) throws SQLException {
         ResultSet resultSet;
         int buffer = 0;
         connect();
-        resultSet = statement.executeQuery("select id_user from users where token = \"" + token + "\"");
+        resultSet = statement.executeQuery(SQLRequest.retrieveIdByToken(token));
         buffer = resultSet.getInt("id_user");
         disconnect();
 
-        if(buffer == 0){
+        if (buffer == 0) {
             throw new SQLException("Unknown token");
         }
 
