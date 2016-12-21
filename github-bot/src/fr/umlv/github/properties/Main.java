@@ -10,9 +10,10 @@ import java.nio.file.Paths;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("github-bot.properties");
+        Path path = Paths.get("/home/qbeacco/Documents/Universite/Java/Projet/thaw/github-bot/ressources/github.properties");
         Parser parser = Parser.setParser(path);
 
-        System.out.println(parser.getAccessToken());
+        Client client = new Client();
+        client.getVertx().deployVerticle(client);
     }
 }
