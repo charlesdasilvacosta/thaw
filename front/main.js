@@ -123,10 +123,8 @@ app.controller('channelCtrl', ['eventBus', '$scope', '$http', '$timeout', functi
 
     }
 
-    $scope.newMessage = function (channel) {
-        var userToken = $scope.userToken;
-        /* a changer !!!!!! */
-        $http.put("https://localhost:4443/message/" + userToken + "/" + $scope.selected.id_channel + "/" + $scope.user_message);
+    $scope.newMessage = function () {
+        $http.put("https://localhost:4443/message/" + $scope.userToken + "/" + $scope.selected.id_channel + "/" + $scope.user_message);
         $scope.user_message = '';
     }
 
@@ -140,9 +138,7 @@ app.controller('channelCtrl', ['eventBus', '$scope', '$http', '$timeout', functi
     }
 
     $scope.newChannel = function () {
-        var user = 1;
-        /* a changer !!!!!! */
-        $http.put("https://localhost:4443/channel/" + user + "/" + $scope.name_channel.toLowerCase());
+        $http.put("https://localhost:4443/channel/" + $scope.userToken + "/" + $scope.name_channel.toLowerCase());
         $('#modalNewChannel').modal('hide');
         $scope.name_channel = '';
     }

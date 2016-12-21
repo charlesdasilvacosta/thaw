@@ -68,7 +68,8 @@ public class Database {
     /*
      * Must change id to user token
      */
-    public void addChannelTable(String channelName, Integer ownerId) throws SQLException {
+    public void addChannel(String channelName, String token) throws SQLException {
+        int ownerId = retrieveIdByToken(token);
         sendRequest(SQLRequest.addChannelToChannelsTable(channelName, ownerId));
         sendRequest(SQLRequest.addChannelTable(channelName));
 

@@ -106,16 +106,21 @@ public class Request {
     private void addChannel(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
 
-        database.addChannelTable(routingContext.request().getParam("name"), Integer.parseInt(routingContext.request().getParam("ownerid")));
+        String name = routingContext.request().getParam("name");
+        String token = routingContext.request().getParam("token");
+
+        System.out.println(token);
+
+
+        database.addChannel(name, token);
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert", "Channel added successfully")));
 
 
         vertx.eventBus().publish("channels", new JsonObject()
                 .put("id_channel",(database.getSeqChannel()))
-                .put("name",routingContext.request().getParam("name"))
-                .put("ownerid",Integer.parseInt(routingContext.request().getParam("ownerid"))));
-
+                .put("name", name)
+                .put("ownerid",database.retrieveIdByToken(token)));
     }
 
     private void listAllChannels(RoutingContext routingContext) throws SQLException {
