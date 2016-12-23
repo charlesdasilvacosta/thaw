@@ -109,9 +109,6 @@ public class Request {
         String name = routingContext.request().getParam("name");
         String token = routingContext.request().getParam("token");
 
-        System.out.println(token);
-
-
         database.addChannel(name, token);
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert", "Channel added successfully")));

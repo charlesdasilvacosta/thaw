@@ -84,7 +84,7 @@
     <!-- Project Libraries -->
 
     <path id="library.libs.classpath">
-        <fileset dir="${basedir}/libs">
+        <fileset dir="${basedir}/lib">
             <patternset refid="library.patterns"/>
         </fileset>
     </path>

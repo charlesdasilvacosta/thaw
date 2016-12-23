@@ -1,10 +1,12 @@
 <component name="libraryTable">
-  <library name="lib">
+  <library name="lib-github">
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/github-bot/lib" />
       <root url="file://$PROJECT_DIR$/github-bot/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/github-bot/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/github-bot/lib" recursive="false" />
   </library>
 </component>

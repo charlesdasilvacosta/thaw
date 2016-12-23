@@ -1,35 +1,38 @@
 package fr.umlv.github.properties;
 
 
-import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Vertx;
-import io.vertx.core.http.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by qbeacco on 21/12/16.
  */
-public class Client extends AbstractVerticle {
+public class Client {
+    private final URLConnection connection;
 
-    private final Vertx vertx;
-
-    public Client(){
-        this.vertx = Vertx.vertx();
+    public Client(URL url) throws IOException {
+        connection = url.openConnection();
     }
 
-    @Override
-    public Vertx getVertx(){
-        return vertx;
+    public String getContent() throws IOException {
+        BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+
+        String line;
+        StringBuilder result = new StringBuilder();
+
+        while((line = input.readLine()) != null){
+            result.append(line);
+        }
+
+        input.close();
+
+        return result.toString();
     }
 
-    @Override
-    public void start(){
-        HttpClientOptions clientOptions = new HttpClientOptions()
-                .setDefaultHost("api.github.com");
-
-        HttpClient client = vertx.createHttpClient(clientOptions);
-
-        client.getNow("/repos/MrQwenty/just_uniq/commits", response -> System.out.println(response.statusMessage()));
-
+    public String getNothing(){
 
     }
 }

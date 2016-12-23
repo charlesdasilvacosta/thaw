@@ -2,10 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6404136-03bb-497b-b0e6-d5a25191ca43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/fr/umlv/thaw/server/Request.class" afterPath="$PROJECT_DIR$/out/production/fr/umlv/thaw/server/Request.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/thaw.db" afterPath="$PROJECT_DIR$/out/production/thaw.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ressources/thaw.db" afterPath="$PROJECT_DIR$/ressources/thaw.db" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/github-bot/lib/alpn-boot-8.1.10.v20161026.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/hamcrest-core-1.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/junit-4.12.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-buffer-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-codec-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-codec-dns-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-codec-http-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-codec-http2-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-common-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-handler-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-handler-proxy-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-resolver-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-resolver-dns-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/netty-transport-4.1.5.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/reactive-streams-1.0.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/rxjava-1.1.9.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/vertx-auth-common-3.3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/vertx-core-3.3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/vertx-reactive-streams-3.3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/vertx-rx-java-3.3.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/vertx-web-3.3.3.jar" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib_github.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/libs.xml" afterPath="$PROJECT_DIR$/.idea/libraries/lib_thaw.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/hamcrest-core-1.3.jar" afterPath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/junit-4.12.jar" afterPath="$PROJECT_DIR$/lib/junit-4.12.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-buffer-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-buffer-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-codec-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-codec-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-codec-dns-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-codec-dns-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-codec-http-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-codec-http-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-codec-http2-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-codec-http2-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-common-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-common-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-handler-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-handler-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-handler-proxy-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-handler-proxy-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-resolver-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-resolver-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-resolver-dns-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-resolver-dns-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/netty-transport-4.1.5.Final.jar" afterPath="$PROJECT_DIR$/lib/netty-transport-4.1.5.Final.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/reactive-streams-1.0.0.jar" afterPath="$PROJECT_DIR$/lib/reactive-streams-1.0.0.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/rxjava-1.1.9.jar" afterPath="$PROJECT_DIR$/lib/rxjava-1.1.9.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/vertx-auth-common-3.3.3.jar" afterPath="$PROJECT_DIR$/lib/vertx-auth-common-3.3.3.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/vertx-core-3.3.3.jar" afterPath="$PROJECT_DIR$/lib/vertx-core-3.3.3.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/vertx-reactive-streams-3.3.3.jar" afterPath="$PROJECT_DIR$/lib/vertx-reactive-streams-3.3.3.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/vertx-rx-java-3.3.3.jar" afterPath="$PROJECT_DIR$/lib/vertx-rx-java-3.3.3.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/github-bot/lib/vertx-web-3.3.3.jar" afterPath="$PROJECT_DIR$/lib/vertx-web-3.3.3.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/jackson-annotations-2.7.0.jar" afterPath="$PROJECT_DIR$/lib/jackson-annotations-2.7.0.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/jackson-core-2.7.4.jar" afterPath="$PROJECT_DIR$/lib/jackson-core-2.7.4.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/jackson-databind-2.7.4.jar" afterPath="$PROJECT_DIR$/lib/jackson-databind-2.7.4.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/sqlite-jdbc-3.14.2.1.jar" afterPath="$PROJECT_DIR$/lib/sqlite-jdbc-3.14.2.1.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github-bot/out/production/fr/umlv/github/properties/Client.class" afterPath="$PROJECT_DIR$/github-bot/out/production/fr/umlv/github/properties/Client.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github-bot/out/production/fr/umlv/github/properties/Main.class" afterPath="$PROJECT_DIR$/github-bot/out/production/fr/umlv/github/properties/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/thaw.iml" afterPath="$PROJECT_DIR$/.idea/thaw.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github-bot/github-bot.iml" afterPath="$PROJECT_DIR$/github-bot/github-bot.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Client.java" afterPath="$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Main.java" afterPath="$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/umlv/thaw/server/Request.java" afterPath="$PROJECT_DIR$/src/fr/umlv/thaw/server/Request.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thaw.xml" afterPath="$PROJECT_DIR$/thaw.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +77,45 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
+            <state relative-caret-position="495">
               <caret line="139" column="37" lean-forward="false" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Request.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/server/Request.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="16" column="99" lean-forward="false" selection-start-line="16" selection-start-column="99" selection-end-line="16" selection-end-column="99" />
               <folding />
             </state>
           </provider>
@@ -41,38 +127,6 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Request.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/server/Request.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="109" column="66" lean-forward="false" selection-start-line="109" selection-start-column="66" selection-end-line="109" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQLRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/database/SQLRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1746">
-              <caret line="107" column="75" lean-forward="false" selection-start-line="107" selection-start-column="75" selection-end-line="107" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/database/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1116">
-              <caret line="71" column="47" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
-              <folding>
-                <marker date="1482359724099" expanded="true" signature="5488:5527" ph="select name users" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -107,11 +161,11 @@
         <option value="$PROJECT_DIR$/src/fr/umlv/thaw/database/SQLRequest.java" />
         <option value="$PROJECT_DIR$/github-bot/ressources/github-bot.properties" />
         <option value="$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Parser.java" />
+        <option value="$PROJECT_DIR$/src/fr/umlv/thaw/database/Database.java" />
+        <option value="$PROJECT_DIR$/front/main.js" />
         <option value="$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Main.java" />
         <option value="$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Client.java" />
-        <option value="$PROJECT_DIR$/src/fr/umlv/thaw/database/Database.java" />
         <option value="$PROJECT_DIR$/src/fr/umlv/thaw/server/Request.java" />
-        <option value="$PROJECT_DIR$/front/main.js" />
       </list>
     </option>
   </component>
@@ -164,98 +218,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="umlv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="umlv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="umlv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="umlv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="github-bot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -274,21 +236,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ressources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thaw" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -306,7 +254,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/github-bot/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
@@ -1188,6 +1136,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b6404136-03bb-497b-b0e6-d5a25191ca43" name="Default" comment="" />
@@ -1206,16 +1157,16 @@
       <workItem from="1482325932149" duration="11220000" />
       <workItem from="1482399029405" duration="675000" />
       <workItem from="1482438995186" duration="3100000" />
-      <workItem from="1482518177644" duration="83000" />
+      <workItem from="1482518177644" duration="4293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33390000" />
+    <option name="totallyTimeSpent" value="37600000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="27" width="1920" height="1053" extended-state="7" />
-    <editor active="true" />
+    <frame x="1600" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1227,12 +1178,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32085562" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32085562" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11770833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12760417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1561,13 +1512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-126">
@@ -1576,35 +1520,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/github-bot/ressources/github.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="71" column="47" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
-          <folding>
-            <marker date="1482359724099" expanded="true" signature="5488:5527" ph="select name users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/database/SQLRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1746">
-          <caret line="107" column="75" lean-forward="false" selection-start-line="107" selection-start-column="75" selection-end-line="107" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1616,19 +1535,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/server/Request.java">
+    <entry file="file://$PROJECT_DIR$/front/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="109" column="66" lean-forward="false" selection-start-line="109" selection-start-column="66" selection-end-line="109" selection-end-column="66" />
+        <state relative-caret-position="495">
+          <caret line="139" column="37" lean-forward="false" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/main.js">
+    <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/database/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="139" column="37" lean-forward="false" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
+        <state relative-caret-position="324">
+          <caret line="71" column="47" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+          <folding>
+            <marker date="1482359724099" expanded="true" signature="5488:5527" ph="select name users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/database/SQLRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="107" column="75" lean-forward="false" selection-start-line="107" selection-start-column="75" selection-end-line="107" selection-end-column="75" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/github-bot/src/fr/umlv/github/properties/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" column="99" lean-forward="false" selection-start-line="16" selection-start-column="99" selection-end-line="16" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/umlv/thaw/server/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1684,11 +1641,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>github-bot</last-edited>
+          <last-edited>thaw</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1696,7 +1654,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>lib</last-edited>
+          <last-edited>lib-thaw</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
