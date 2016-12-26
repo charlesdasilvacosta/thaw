@@ -98,7 +98,7 @@ public class Database {
         int seq;
         ResultSet requestResult;
         connect();
-        requestResult = statement.executeQuery(SQLRequest.getSeqChanbnel());
+        requestResult = statement.executeQuery(SQLRequest.getSeqChannel());
         seq = requestResult.getInt("seq");
         disconnect();
         return seq;

@@ -25,6 +25,12 @@ public class Server extends AbstractVerticle {
     private final Vertx vertx;
     private final int port;
 
+    /**
+     * Constructor of server
+     * @param database database for adding, updating, and list request result
+     * @param cert certificate for https support
+     * @param port port for request server
+     */
     public Server(Database database, Certificate cert, int port) {
         this.database = Objects.requireNonNull(database);
         this.cert = Objects.requireNonNull(cert);
@@ -33,6 +39,9 @@ public class Server extends AbstractVerticle {
 
     }
 
+    /**
+     * This method is the main  component of server
+     */
     @Override
     public void start() {
 
@@ -44,12 +53,16 @@ public class Server extends AbstractVerticle {
          */
 
         vertx.createHttpServer(new HttpServerOptions().setSsl(true).setKeyStoreOptions(
-                new JksOptions().setPath(cert.getStringCertPath()).setPassword(cert.getPassword())
+                new JksOptions().setPath(cert.getCertPath().toString()).setPassword(cert.getPassword())
         )).requestHandler(requests.getRouter()::accept).listen(port);
 
         System.out.println("Vert.x server is running");
     }
 
+    /**
+     * Getter for vertx object
+     * @return return vertx of actual object
+     */
     @Override
     public Vertx getVertx() {
         return vertx;

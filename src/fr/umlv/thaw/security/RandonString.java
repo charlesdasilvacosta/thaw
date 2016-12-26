@@ -7,6 +7,10 @@ import java.util.Random;
  */
 public class RandonString {
 
+    /**
+     * Static method for have random string, use for token cause must be uniq for users
+     * @return random string
+     */
     public static String randomString() {
         char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-".toCharArray();
         StringBuilder sb = new StringBuilder();

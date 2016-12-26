@@ -10,19 +10,28 @@ public class Certificate {
     private final Path certPath;
     private final String password;
 
+    /**
+     * Constructor for certificate
+     * @param certPath paths of jks (JavaKeyStore) file
+     * @param password the password of jks file
+     */
     public Certificate(Path certPath, String password) {
         this.certPath = Objects.requireNonNull(certPath);
         this.password = Objects.requireNonNull(password);
     }
 
-    private Path getCertPath() {
+    /**
+     * Getter for certificate path
+     * @return the path of certificate
+     */
+    public Path getCertPath() {
         return certPath;
     }
 
-    public String getStringCertPath() {
-        return this.getCertPath().toString();
-    }
-
+    /**
+     * Getter for password
+     * @return the password of jks file
+     */
     public String getPassword() {
         return password;
     }

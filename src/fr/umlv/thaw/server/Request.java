@@ -27,25 +27,42 @@ public class Request {
     private final Database database;
     private final Vertx vertx;
 
+    /**
+     * Constructor for Request object
+     *
+     * @param router   used for all http request
+     * @param database for adding, updating, and list request result
+     * @param vertx    used for cookies protection and eventbus(proprietary websocket)
+     */
     public Request(Router router, Database database, Vertx vertx) {
         this.router = Objects.requireNonNull(router);
         this.database = Objects.requireNonNull(database);
         this.vertx = Objects.requireNonNull(vertx);
     }
 
+    /**
+     * Getter, wich return router
+     *
+     * @return Router
+     */
     public Router getRouter() {
         return router;
     }
 
+    /**
+     * Must call from outside to use request engine
+     */
     public void useRequests() {
-        protectCookies(vertx);
+        protectCookies();
         allowRequest();
         requestPath();
     }
 
-    /*
-         * Catch SQLException without code replica
-         */
+    /**
+     * This method used internal interface for catching SQLException, without code replica
+     * @param consumer       method wich executed when http request is called
+     * @param routingContext the routing context of actual request
+     */
     private void tryCatchSQLException(Request.CheckedSQLConsumer<RoutingContext> consumer, RoutingContext routingContext) {
         try {
             consumer.accept(routingContext);
@@ -54,6 +71,9 @@ public class Request {
         }
     }
 
+    /**
+     * This method is used to allow all authorization for request over web browser and front
+     */
     private void allowRequest() {
         CorsHandler corsHandler = CorsHandler.create("*");
         corsHandler.allowedMethod(HttpMethod.OPTIONS);
@@ -67,7 +87,10 @@ public class Request {
         router.route().handler(corsHandler);
     }
 
-    private void protectCookies(Vertx vertx) {
+    /**
+     * This method activate secure flag into cookies
+     */
+    private void protectCookies() {
         router.route().handler(CookieHandler.create());
         router.route().handler(SessionHandler
                 .create(LocalSessionStore.create(vertx))
@@ -75,6 +98,9 @@ public class Request {
                 .setCookieSecureFlag(true));
     }
 
+    /**
+     * This method, activate eventbus and list all request allow by server
+     */
     private void requestPath() {
 
 
@@ -90,19 +116,29 @@ public class Request {
 
         router.get("/users").handler((routingContext) -> tryCatchSQLException(this::listAllUsers, routingContext));
         router.get("/channels").handler((routingContext) -> tryCatchSQLException(this::listAllChannels, routingContext));
-        router.get("/message/:channelid").handler((routingContest) -> tryCatchSQLException(this::getAllMessage, routingContest));
+        router.get("/message/:channelid").handler((routingContest) -> tryCatchSQLException(this::listAllMessageByChannel, routingContest));
         router.put("/channel/:token/:name").handler((routingContest) -> tryCatchSQLException(this::addChannel, routingContest));
         router.put("/message/:token/:channelid/:message").handler((routingContext) -> tryCatchSQLException(this::sendMessage, routingContext));
         router.put("/newuser/:name/:login/:password").handler((routingContest) -> tryCatchSQLException(this::addNewUser, routingContest));
         router.post("/connect/:login/:password").handler(routingContext -> tryCatchSQLException(this::connect,routingContext));
     }
 
+    /**
+     * This method list all user in request response
+     * @param routingContext useful for response
+     * @throws SQLException when have problem into sql query
+     */
     private void listAllUsers(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(database.listAllUsers()));
     }
 
+    /**
+     * This method add channel, use user token for mor safety
+     * @param routingContext useful for response and retrieve info sent over http request
+     * @throws SQLException when have problem into sql query
+     */
     private void addChannel(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
 
@@ -120,13 +156,22 @@ public class Request {
                 .put("ownerid",database.retrieveIdByToken(token)));
     }
 
+    /**
+     * This method list all channel
+     * @param routingContext useful for response
+     * @throws SQLException when have problem into sql query
+     */
     private void listAllChannels(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(database.listAllChannels()));
     }
 
-    //Modify to use token
+    /**
+     * This method send message, use user token for safety
+     * @param routingContext useful for response and retrieve info send over http request
+     * @throws SQLException when have problem into sql query
+     */
     private void sendMessage(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
 
@@ -145,12 +190,22 @@ public class Request {
                 .put("message",routingContext.request().getParam("message")));
     }
 
-    private void getAllMessage(RoutingContext routingContext) throws SQLException {
+    /**
+     * This method list all message by channel
+     * @param routingContext useful for response and retrieve info over http request
+     * @throws SQLException when have problem with sql query
+     */
+    private void listAllMessageByChannel(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(database.listMessagesByChannelId(Integer.parseInt(routingContext.request().getParam("channelid")))));
     }
 
+    /**
+     * This metho add new user
+     * @param routingContext useful for response and retrieve info over http method
+     * @throws SQLException when have problem with sql query
+     */
     private void addNewUser(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
         String name = routingContext.request().getParam("name");
@@ -164,6 +219,11 @@ public class Request {
 
     }
 
+    /**
+     * This method connect user, create new token, each time the user log in
+     * @param routingContext useful for response and retrieve info over http request
+     * @throws SQLException when have problem whith sql query
+     */
     private void connect(RoutingContext routingContext) throws SQLException{
         HttpServerResponse response = routingContext.response();
 
@@ -174,8 +234,9 @@ public class Request {
 
     }
 
-    /*
-     * Private interface to catch exception for request method
+    /**
+     * This functional interface used to catch SQL Exception
+     * @param <T> actually, we use RoutingContext but you can use anything who throw SQLException
      */
     @FunctionalInterface
     private interface CheckedSQLConsumer<T> {

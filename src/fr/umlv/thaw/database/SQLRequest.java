@@ -9,10 +9,20 @@ import javafx.beans.binding.When;
  */
 class SQLRequest {
 
+    /**
+     * Static method build string request for list user
+     * @return list user request
+     */
     public static String listUsers() {
         return "select id_user, name from users";
     }
 
+    /**
+     * Static method build string request for add channel to channels table
+     * @param channelName channel name
+     * @param ownerId owner id
+     * @return add channel to channels table request
+     */
     public static String addChannelToChannelsTable(String channelName, Integer ownerId) {
         StringBuilder request = new StringBuilder();
         request.append("insert into channels ")
@@ -26,6 +36,11 @@ class SQLRequest {
         return request.toString();
     }
 
+    /**
+     * Static method build string request for creating channel table
+     * @param channelName channel name
+     * @return add table channel request
+     */
     public static String addChannelTable(String channelName) {
         StringBuilder request = new StringBuilder();
 
@@ -38,14 +53,29 @@ class SQLRequest {
         return request.toString();
     }
 
+    /**
+     * Static method build string request for list all channels
+     * @return list all channels request
+     */
     public static String listChannels() {
         return "select * from channels";
     }
 
-    public static String getSeqChanbnel() {
+    /**
+     * Static method build string request for retrieving id of last channel
+     * @return sequence channel request
+     */
+    public static String getSeqChannel() {
         return "select seq from sqlite_sequence where name=\"channels\"";
     }
 
+    /**
+     * Static method build string request for adding message
+     * @param userId user id
+     * @param channelName channel name
+     * @param message message
+     * @return add message request
+     */
     public static String addMessage(Integer userId, String channelName, String message) {
         StringBuilder request = new StringBuilder();
 
@@ -57,10 +87,23 @@ class SQLRequest {
         return request.toString();
     }
 
+    /**
+     * Static method build string request
+     * @param channelName channel name
+     * @return list message by channel request
+     */
     public static String listMessageByChannel(String channelName){
         return new StringBuilder().append("select * from ").append(channelName).toString();
     }
 
+    /**
+     * Static method build string request for adding user
+     * @param name name of user
+     * @param login lofin of user
+     * @param password password of user
+     * @param token access token of user
+     * @return add user request
+     */
     public static String addUser(String name, String login, String password, String token){
         StringBuilder request = new StringBuilder();
 
@@ -74,6 +117,13 @@ class SQLRequest {
         return request.toString();
     }
 
+    /**
+     * Static method build string request for connecting user
+     * @param login login or user
+     * @param password password og user
+     * @param newToken new access token of user
+     * @return connect user request
+     */
     public static String connectUser(String login, String password, String newToken){
         StringBuilder request = new StringBuilder();
 
@@ -87,6 +137,12 @@ class SQLRequest {
         return request.toString();
     }
 
+    /**
+     * Static method build string request for retrieve info is user exist
+     * @param login login of user
+     * @param password password of user
+     * @return
+     */
     public static String userExist(String login, String password){
         StringBuilder request = new StringBuilder();
 

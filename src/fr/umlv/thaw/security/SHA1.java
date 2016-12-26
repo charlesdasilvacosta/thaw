@@ -8,6 +8,11 @@ import java.security.NoSuchAlgorithmException;
  */
 public class SHA1 {
 
+    /**
+     * Static methode to hash password with SHA-1
+     * @param password the clear password
+     * @return the hashed password
+     */
     public static String hash(String password) {
         byte[] result = new byte[0];
         try {
