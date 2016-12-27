@@ -35,7 +35,7 @@
                     <span style="color:white;">{{name_login}}<span class="caret"></span></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href>Disconnect</a></li>
+                    <li><a href="index.html">Disconnect</a></li>
                 </ul>
             </li>
             <li data-toggle="modal" data-target="#modalNewChannel"><a href class="addchannel">CHANNELS ({{countChannels}})<span class="glyphicon glyphicon-plus float-xs-right"></span></a>
@@ -73,7 +73,7 @@
 
             <div id="list_message">
 
-                <div class="row" ng-repeat="message in messages | filter: searchMessage">
+                <div class="row" ng-repeat="message in messages | filter:{message: searchMessage}">
                     <div class="col-xs-12">
                         <span class="author">{{message.author}}</span> <span class="date">{{message.post_date}}</span>
                         <p>{{message.message}}</p>
