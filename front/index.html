@@ -19,7 +19,7 @@
 <body ng-app="chat" ng-controller="channelCtrl">
 	<div class="login-page" ng-show="showLogin" ng-submit="connection()">
 			<form class="loginform">
-				<input ng-model="name_login" type="text" placeholder="Username" required>
+				<input ng-model="name_logintmp" type="text" placeholder="Username" required>
 				<input ng-model="password_login" type="password" placeholder="Password" required>
 				<button>login</button>
 			</form>
@@ -28,11 +28,11 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <div id="sidebar-wrapper"  data-ng-init="init()">
+    <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand ">
                 <a href id="pseudonyme" class="dropdown-toggle" data-toggle="dropdown" type="button">
-                    <span style="color:white;">Pseudonyme<span class="caret"></span></span>
+                    <span style="color:white;">{{name_login}}<span class="caret"></span></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href>Disconnect</a></li>
@@ -44,7 +44,9 @@
             <!--<li>
                 <a href="#" class="channel active">Channel 1</a>
             </li>-->
-            <li ng-repeat="channel in channels" ng-class="{active: isActive(channel)}"><a href class="channel" ng-click="choiceChannel(channel)">{{channel.name}}</a><a href class="glyphicon glyphicon-remove-sign"></a></li>
+            <li ng-repeat="channel in channels" ng-class="{active: isActive(channel)}">
+                <a href class="channel" ng-click="choiceChannel(channel)">{{channel.name}}</a>
+                <a href class="glyphicon glyphicon-remove-sign" ng-click="removeChannel(channel)"></a></li>
         </ul>
     </div>
     <div id="button_menu"><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-chevron-right"

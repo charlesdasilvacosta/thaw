@@ -6,6 +6,7 @@ import io.vertx.core.json.JsonObject;
 
 import java.nio.file.Path;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -208,4 +209,19 @@ public class Database {
 
         return buffer;
     }
+
+    public void deleteChannel(String name) throws SQLException {
+        StringBuilder request1= new StringBuilder();
+        StringBuilder request2= new StringBuilder();
+        request1.append("DROP TABLE ch_").append(name);
+        request2.append("DELETE FROM CHANNELS WHERE name like \"ch_").append(name).append("\";");
+        sendRequest(request1.toString());
+        sendRequest(request2.toString());
+    }
+
+    public String getTimeDatabase(){
+        return new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new java.sql.Timestamp(System.currentTimeMillis()));
+
+    }
+
 }

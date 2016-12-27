@@ -49,35 +49,54 @@ app.controller('channelCtrl', ['eventBus', '$scope', '$http', '$timeout', functi
             $scope.countChannels = Object.keys($scope.channels).length;
         });
 
+    };
 
-        eventBus.onopen = function () {
+
+    eventBus.onopen = function () {
             console.log("Event bus connected !");
             eventBus.registerHandler('channels', function (object) {
+                if(object.etat=="add") {
+                    var channel = ({
+                        "id_channel": object.id_channel,
+                        "name": object.name.toLowerCase(),
+                        "ownerid": object.ownerid
+                    });
 
-                var channel = ({
-                    "id_channel": object.id_channel,
-                    "name": object.name.toLowerCase(),
-                    "ownerid": object.ownerid
-                });
-
-                $scope.channels[$scope.countChannels] = channel;
-                $scope.countChannels += 1;
+                    $scope.channels[$scope.countChannels] = channel;
+                    $scope.countChannels += 1;
+                }
+                else if(object.etat=="delete") {
+                    for(var i = $scope.channels.length-1;i>=0;i--){
+                        if($scope.channels[i].name==object.name){
+                            $scope.channels.splice(i,1);
+                            $scope.countChannels -= 1;
+                            if($scope.title==object.name){
+                                $scope.title = '';
+                                $("#zonemessage input").prop('disabled', true);
+                            }
+                            break;
+                        }
+                    }
+                }
                 $scope.$apply();
             });
 
 
-        };
     };
+
 
     $scope.isActive = function (item) {
         return $scope.selected === item;
     };
 
     $scope.connection = function () {
-        $http.post("https://localhost:4443/connect/" + $scope.name_login + "/" + $scope.password_login).then(function (response) {
+        $http.post("https://localhost:4443/connect/" + $scope.name_logintmp + "/" + $scope.password_login).then(function (response) {
             $scope.userToken = response.data.token;
             if ($scope.userToken != "null") {
+                $scope.name_login=$scope.name_logintmp;
                 $scope.showLogin = false;
+                $scope.init();
+
             } else {
                 alert("Invalid Login or Password");
             }
@@ -123,7 +142,7 @@ app.controller('channelCtrl', ['eventBus', '$scope', '$http', '$timeout', functi
 
     }
 
-    $scope.newMessage = function () {
+    $scope.newMessage = function (channel) {
         $http.put("https://localhost:4443/message/" + $scope.userToken + "/" + $scope.selected.id_channel + "/" + $scope.user_message);
         $scope.user_message = '';
     }
@@ -142,6 +161,17 @@ app.controller('channelCtrl', ['eventBus', '$scope', '$http', '$timeout', functi
         $('#modalNewChannel').modal('hide');
         $scope.name_channel = '';
     }
+
+    $scope.removeChannel=function (channel){
+        $http.delete("https://localhost:4443/channel/"+channel.name);
+        var index = $scope.channels.indexOf(channel);
+        $scope.channels.splice(index, 1);
+        $scope.countChannels -= 1;
+        if($scope.selected==channel){
+            $scope.title = '';
+            $("#zonemessage input").prop('disabled', true);
+        }
+    };
 
 
 }]);

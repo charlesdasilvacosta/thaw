@@ -60,6 +60,7 @@ public class Request {
 
     /**
      * This method used internal interface for catching SQLException, without code replica
+     *
      * @param consumer       method wich executed when http request is called
      * @param routingContext the routing context of actual request
      */
@@ -120,11 +121,29 @@ public class Request {
         router.put("/channel/:token/:name").handler((routingContest) -> tryCatchSQLException(this::addChannel, routingContest));
         router.put("/message/:token/:channelid/:message").handler((routingContext) -> tryCatchSQLException(this::sendMessage, routingContext));
         router.put("/newuser/:name/:login/:password").handler((routingContest) -> tryCatchSQLException(this::addNewUser, routingContest));
-        router.post("/connect/:login/:password").handler(routingContext -> tryCatchSQLException(this::connect,routingContext));
+        router.post("/connect/:login/:password").handler(routingContext -> tryCatchSQLException(this::connect, routingContext));
+        router.delete("/channel/:name").handler((routingContest) -> tryCatchSQLException(this::deleteChannel, routingContest));
+    }
+
+    /**
+     * This method delete a channel
+     *
+     * @param routingContext useful for response
+     * @throws SQLException when have problem into sql query
+     */
+    private void deleteChannel(RoutingContext routingContext) throws SQLException {
+        HttpServerResponse response = routingContext.response();
+        database.deleteChannel(routingContext.request().getParam("name"));
+        response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert", "Channel deleted successfully")));
+
+        vertx.eventBus().publish("channels", new JsonObject()
+                .put("etat", "delete")
+                .put("name", routingContext.request().getParam("name")));
     }
 
     /**
      * This method list all user in request response
+     *
      * @param routingContext useful for response
      * @throws SQLException when have problem into sql query
      */
@@ -136,6 +155,7 @@ public class Request {
 
     /**
      * This method add channel, use user token for mor safety
+     *
      * @param routingContext useful for response and retrieve info sent over http request
      * @throws SQLException when have problem into sql query
      */
@@ -149,15 +169,16 @@ public class Request {
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert", "Channel added successfully")));
 
-
         vertx.eventBus().publish("channels", new JsonObject()
-                .put("id_channel",(database.getSeqChannel()))
+                .put("etat", "add")
+                .put("id_channel", (database.getSeqChannel()))
                 .put("name", name)
-                .put("ownerid",database.retrieveIdByToken(token)));
+                .put("ownerid", database.retrieveIdByToken(token)));
     }
 
     /**
      * This method list all channel
+     *
      * @param routingContext useful for response
      * @throws SQLException when have problem into sql query
      */
@@ -169,6 +190,7 @@ public class Request {
 
     /**
      * This method send message, use user token for safety
+     *
      * @param routingContext useful for response and retrieve info send over http request
      * @throws SQLException when have problem into sql query
      */
@@ -182,16 +204,18 @@ public class Request {
         );
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert", "Message added successfully")));
-        System.out.println("envoi sur channel "+routingContext.request().getParam("channelid"));
+        System.out.println("envoi sur channel " + routingContext.request().getParam("channelid"));
 
-        vertx.eventBus().publish("channel"+Integer.parseInt(routingContext.request().getParam("channelid")),
-                new JsonObject().put("authorid",database.retrieveIdByToken(routingContext.request().getParam("token")))
-                .put("channelid",Integer.parseInt(routingContext.request().getParam("channelid")))
-                .put("message",routingContext.request().getParam("message")));
+        vertx.eventBus().publish("channel" + Integer.parseInt(routingContext.request().getParam("channelid")),
+                new JsonObject().put("authorid", database.retrieveIdByToken(routingContext.request().getParam("token")))
+                        .put("channelid", Integer.parseInt(routingContext.request().getParam("channelid")))
+                        .put("message", routingContext.request().getParam("message"))
+                        .put("post_date",database.getTimeDatabase()));
     }
 
     /**
      * This method list all message by channel
+     *
      * @param routingContext useful for response and retrieve info over http request
      * @throws SQLException when have problem with sql query
      */
@@ -203,6 +227,7 @@ public class Request {
 
     /**
      * This metho add new user
+     *
      * @param routingContext useful for response and retrieve info over http method
      * @throws SQLException when have problem with sql query
      */
@@ -212,30 +237,32 @@ public class Request {
         String login = routingContext.request().getParam("login");
         String password = SHA1.hash(routingContext.request().getParam("password"));
 
-        database.addNewUser(name,login,password);
+        database.addNewUser(name, login, password);
 
-        response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert","user create successfully")));
+        response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert", "user create successfully")));
 
 
     }
 
     /**
      * This method connect user, create new token, each time the user log in
+     *
      * @param routingContext useful for response and retrieve info over http request
      * @throws SQLException when have problem whith sql query
      */
-    private void connect(RoutingContext routingContext) throws SQLException{
+    private void connect(RoutingContext routingContext) throws SQLException {
         HttpServerResponse response = routingContext.response();
 
         String login = routingContext.request().getParam("login");
         String password = SHA1.hash(routingContext.request().getParam("password"));
 
-        response.putHeader("content-type","application/json").end(Json.encodePrettily(database.connectUser(login,password)));
+        response.putHeader("content-type", "application/json").end(Json.encodePrettily(database.connectUser(login, password)));
 
     }
 
     /**
      * This functional interface used to catch SQL Exception
+     *
      * @param <T> actually, we use RoutingContext but you can use anything who throw SQLException
      */
     @FunctionalInterface
