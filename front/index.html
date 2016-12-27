@@ -60,7 +60,7 @@
                 <div class="col-xs-12 titlechannel">
                     <div class="col-xs-12 col-sm-6 col-md-8 title">{{title}}</div>
                     <div class="input-group col-xs-12 col-sm-6 col-md-4">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="searchMessage">
                         <span class="input-group-addon">
 							<button type="submit">
 								<span class="glyphicon glyphicon-search"></span>
@@ -73,7 +73,7 @@
 
             <div id="list_message">
 
-                <div class="row" ng-repeat="message in messages">
+                <div class="row" ng-repeat="message in messages | filter: searchMessage">
                     <div class="col-xs-12">
                         <span class="author">{{message.author}}</span> <span class="date">{{message.post_date}}</span>
                         <p>{{message.message}}</p>
