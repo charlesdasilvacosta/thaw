@@ -51,6 +51,13 @@ app.controller('channelCtrl', ['eventBus', '$scope', '$http', '$timeout', functi
 
     };
 
+    $scope.search=function () {
+        $timeout(function () {
+            var scroller = document.getElementById("list_message");
+            scroller.scrollTop = scroller.scrollHeight;
+        }, 0, false);
+    };
+
 
     eventBus.onopen = function () {
             console.log("Event bus connected !");
