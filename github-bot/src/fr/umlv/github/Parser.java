@@ -1,4 +1,4 @@
-package fr.umlv.github.properties;
+package fr.umlv.github;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * Created by qbeacco on 20/12/16.
  */
-public class Parser {
+class Parser {
     private Properties properties;
 
     public static Parser setParser(Path path) throws IOException{

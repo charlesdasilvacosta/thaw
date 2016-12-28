@@ -1,4 +1,4 @@
-package fr.umlv.github.properties;
+package fr.umlv.github;
 
 
 import java.io.BufferedReader;
@@ -10,7 +10,7 @@ import java.net.URLConnection;
 /**
  * Created by qbeacco on 21/12/16.
  */
-public class Client {
+class Client {
     private final URLConnection connection;
 
     public Client(URL url) throws IOException {
@@ -30,9 +30,5 @@ public class Client {
         input.close();
 
         return result.toString();
-    }
-
-    public String getNothing(){
-
     }
 }
