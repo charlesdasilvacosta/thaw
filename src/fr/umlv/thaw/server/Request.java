@@ -19,7 +19,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
- * Created by qbeacco on 20/11/16.
+ * Created by Quentin Béacco and Charles Dasilva Costa
+ * Thaw Project M1 Informatique
  */
 public class Request {
 
@@ -173,7 +174,7 @@ public class Request {
                 .put("etat", "add")
                 .put("id_channel", (database.getSeqChannel()))
                 .put("name", name)
-                .put("ownerid", database.retrieveIdByToken(token)));
+                .put("ownerid", database.retrieveUserIdByToken(token)));
     }
 
     /**
@@ -207,7 +208,7 @@ public class Request {
         System.out.println("envoi sur channel " + routingContext.request().getParam("channelid"));
 
         vertx.eventBus().publish("channel" + Integer.parseInt(routingContext.request().getParam("channelid")),
-                new JsonObject().put("authorid", database.retrieveIdByToken(routingContext.request().getParam("token")))
+                new JsonObject().put("authorid", database.retrieveUserIdByToken(routingContext.request().getParam("token")))
                         .put("channelid", Integer.parseInt(routingContext.request().getParam("channelid")))
                         .put("message", routingContext.request().getParam("message"))
                         .put("post_date",database.getTimeDatabase()));

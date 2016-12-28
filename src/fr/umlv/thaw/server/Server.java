@@ -16,7 +16,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Created by qbeacco on 18/10/16.
+ * Created by Quentin Béacco and Charles Dasilva Costa
+ * Thaw Project M1 Informatique
  */
 public class Server extends AbstractVerticle {
 
@@ -40,7 +41,7 @@ public class Server extends AbstractVerticle {
     }
 
     /**
-     * This method is the main  component of server
+     * This method is the main component of server
      */
     @Override
     public void start() {

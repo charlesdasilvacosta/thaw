@@ -4,12 +4,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by qbeacco on 05/12/16.
+ * Created by Quentin Béacco and Charles Dasilva Costa
+ * Thaw Project M1 Informatique
  */
 public class SHA1 {
 
     /**
-     * Static methode to hash password with SHA-1
+     * Static method to hash password with SHA-1
      * @param password the clear password
      * @return the hashed password
      */

@@ -4,7 +4,8 @@ import java.nio.file.Path;
 import java.util.Objects;
 
 /**
- * Created by qbeacco on 20/11/16.
+ * Created by Quentin Béacco and Charles Dasilva Costa
+ * Thaw Project M1 Informatique
  */
 public class Certificate {
     private final Path certPath;

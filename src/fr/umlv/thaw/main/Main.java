@@ -8,7 +8,8 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 
 /**
- * Created by qbeacco on 20/11/16.
+ * Created by Quentin Béacco and Charles Dasilva Costa
+ * Thaw Project M1 Informatique
  */
 public class Main {
     public static void main(String[] args) {

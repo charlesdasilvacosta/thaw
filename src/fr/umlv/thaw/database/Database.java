@@ -11,17 +11,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by qbeacco on 18/10/16.
+ * Created by Quentin Béacco and Charles Dasilva Costa
+ * Thaw Project M1 Informatique
  */
 public class Database {
     private final Path databasePath;
     private Connection connection = null;
     private Statement statement = null;
 
+    /**
+     * Constructor of database object
+     *
+     * @param databasePath the path of database file
+     */
     public Database(Path databasePath) {
         this.databasePath = databasePath;
     }
 
+    /**
+     * Private method to connect to database
+     */
     private void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -34,6 +43,9 @@ public class Database {
         }
     }
 
+    /**
+     * Private method to disconnect to database
+     */
     private void disconnect() {
         try {
             statement.close();
@@ -43,12 +55,24 @@ public class Database {
         }
     }
 
+    /**
+     * Private method to update, create or delete things on database (not available for query)
+     *
+     * @param request the request
+     * @throws SQLException throw if have problem with sql request
+     */
     private void sendRequest(String request) throws SQLException {
         this.connect();
         statement.executeUpdate(request);
         this.disconnect();
     }
 
+    /**
+     * List all users and collects
+     *
+     * @return list of json object of users
+     * @throws SQLException throw if have problem with sql request
+     */
     public List<JsonObject> listAllUsers() throws SQLException {
         List<JsonObject> allUsers = new ArrayList<>();
         ResultSet requestResult;
@@ -66,16 +90,26 @@ public class Database {
 
     }
 
-    /*
-     * Must change id to user token
+    /**
+     * Add channel to database
+     *
+     * @param channelName channel name
+     * @param token       user token
+     * @throws SQLException throw if have problem with sql request or channel name already exist (cause, in database, the name is unique) or invalid token
      */
     public void addChannel(String channelName, String token) throws SQLException {
-        int ownerId = retrieveIdByToken(token);
+        int ownerId = retrieveUserIdByToken(token);
         sendRequest(SQLRequest.addChannelToChannelsTable(channelName, ownerId));
         sendRequest(SQLRequest.addChannelTable(channelName));
 
     }
 
+    /**
+     * List all channels
+     *
+     * @return list of json object of all channels
+     * @throws SQLException throw if have problem with sql request
+     */
     public List<JsonObject> listAllChannels() throws SQLException {
         List<JsonObject> allChannels = new ArrayList<>();
         ResultSet requestResult;
@@ -92,8 +126,11 @@ public class Database {
         return allChannels;
     }
 
-    /*
-     * Useful to get id of created channel
+    /**
+     * Get the id of last channel created
+     *
+     * @return the id of last channel created
+     * @throws SQLException throw if have problem with sql request
      */
     public int getSeqChannel() throws SQLException {
         int seq;
@@ -105,15 +142,16 @@ public class Database {
         return seq;
     }
 
+    /**
+     * Add message to database
+     *
+     * @param token     user token
+     * @param channelId channel id
+     * @param message   message body
+     * @throws SQLException throw if have problem with sql request of invalid token
+     */
     public void addMessage(String token, Integer channelId, String message) throws SQLException {
-        StringBuilder requestInsertMessage = new StringBuilder();
-
-        /*requestInsertMessage.append("insert into ").append(retrieveChannelName(channelId))
-                .append(" values")
-                .append("(").append(retrieveIdByToken(token)).append(",").append("datetime(CURRENT_TIMESTAMP,'LOCALTIME')").append(",\"").append(message).append("\")");
-           */
-
-        sendRequest(SQLRequest.addMessage(retrieveIdByToken(token),retrieveChannelName(channelId),message));
+        sendRequest(SQLRequest.addMessage(retrieveUserIdByToken(token), retrieveChannelName(channelId), message));
     }
 
     public List<JsonObject> listMessagesByChannelId(Integer channelId) throws SQLException {
@@ -143,39 +181,37 @@ public class Database {
 
     }
 
-    /*
-     * This method return the new token of connected user
+    /**
+     * Return the new token of connected user
+     *
+     * @param login    login or user
+     * @param password password of user
+     * @return the new token of connected user or if user doesn't exist, "null" has returned and front will handle this data
+     * @throws SQLException throw if have problem with sql request
      */
     public JsonObject connectUser(String login, String password) throws SQLException {
         String newToken = SHA1.hash(RandonString.randomString());
         if (userExist(login, password)) {
-            sendRequest(SQLRequest.connectUser(login,password,newToken));
+            sendRequest(SQLRequest.connectUser(login, password, newToken));
             return new JsonObject().put("token", newToken);
         }
         return new JsonObject().put("token", "null");
 
     }
 
-
-    /*
-     * Unused method, must delete it after
+    /**
+     * Return just boolean to say if user exit of no
+     *
+     * @param login    login of user
+     * @param password password of user
+     * @return true, if user exist or false
+     * @throws SQLException throw if have problem with sql request
      */
-    private String retrieveUserName(int id) throws SQLException {
-        ResultSet resultSet;
-        String buffer;
-        connect();
-        resultSet = statement.executeQuery("select name from users where id_user = " + id);
-        buffer = resultSet.getString("name");
-        disconnect();
-        return buffer;
-    }
-
-
     private boolean userExist(String login, String password) throws SQLException {
         ResultSet resultSet;
         boolean flag = false;
         connect();
-        resultSet = statement.executeQuery(SQLRequest.userExist(login,password));
+        resultSet = statement.executeQuery(SQLRequest.userExist(login, password));
         while (resultSet.next()) {
             if (login.equals(resultSet.getString("login")) && password.equals(resultSet.getString("password"))) {
                 flag = true;
@@ -185,6 +221,13 @@ public class Database {
         return flag;
     }
 
+    /**
+     * Return the name of channel by his id
+     *
+     * @param id the id of channel
+     * @return the name of channel
+     * @throws SQLException throw if have problem with sql request or if id is wrong
+     */
     private String retrieveChannelName(int id) throws SQLException {
         ResultSet resultSet;
         String buffer;
@@ -195,11 +238,18 @@ public class Database {
         return buffer;
     }
 
-    public int retrieveIdByToken(String token) throws SQLException {
+    /**
+     * Return the id by the user token
+     *
+     * @param token user token
+     * @return the id of user token
+     * @throws SQLException throw if have problem with sql request or token is wrong
+     */
+    public int retrieveUserIdByToken(String token) throws SQLException {
         ResultSet resultSet;
         int buffer = 0;
         connect();
-        resultSet = statement.executeQuery(SQLRequest.retrieveIdByToken(token));
+        resultSet = statement.executeQuery(SQLRequest.retrieveUserIdByToken(token));
         buffer = resultSet.getInt("id_user");
         disconnect();
 
@@ -210,16 +260,23 @@ public class Database {
         return buffer;
     }
 
+    /**
+     * Delete channel
+     *
+     * @param name channel name
+     * @throws SQLException throw if have problem with sql request or channel name doesn't exist
+     */
     public void deleteChannel(String name) throws SQLException {
-        StringBuilder request1= new StringBuilder();
-        StringBuilder request2= new StringBuilder();
-        request1.append("DROP TABLE ch_").append(name);
-        request2.append("DELETE FROM CHANNELS WHERE name like \"ch_").append(name).append("\";");
-        sendRequest(request1.toString());
-        sendRequest(request2.toString());
+        sendRequest(SQLRequest.deleteChannelTable(name));
+        sendRequest(SQLRequest.deleteChannelFromChannels(name));
     }
 
-    public String getTimeDatabase(){
+    /**
+     * Get the date and time of database
+     *
+     * @return string contains date and time of database
+     */
+    public String getTimeDatabase() {
         return new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new java.sql.Timestamp(System.currentTimeMillis()));
 
     }
