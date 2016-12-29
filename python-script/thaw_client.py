@@ -16,7 +16,7 @@ class Options:
 
     def __parseopt(self, argv):
         try:
-            opts, args = getopt.getopt(argv, "hp:a:c:m::")
+            opts, args = getopt.getopt(argv, "hp:a:c:m:")
         except getopt.GetoptError:
             print('thaw_client.py -p <port> -a <ip adress> -c <channel name> -m <message limit, default at 10>')
             raise ValueError('Invalid option(s)')
