@@ -72,6 +72,8 @@ if __name__ == '__main__':
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     options = Options(sys.argv[1:])
 
+    messagelimit = options.getmessagelimit()
+
     channelid_client = Client(options.getipadress(), options.getport())
     channelid_client.url('channels')
 
@@ -87,7 +89,12 @@ if __name__ == '__main__':
     message_client = Client(options.getipadress(), options.getport())
     message_client.url('message/'+str(channelid))
 
-    for message in message_client.json():
+
+
+    for message in reversed(message_client.json()):
+        if messagelimit == 0:
+            break
+        messagelimit -= 1
         print('\nAuthor: ' + getusername(message.get('author_id'),options))
         print('Date: ' + message.get('post_date'))
         print('Message: ' + message.get('message'))
