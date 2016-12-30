@@ -5,18 +5,13 @@ import fr.umlv.thaw.database.Database;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerOptions;
-import io.vertx.core.json.JsonArray;
-import io.vertx.core.json.JsonObject;
 import io.vertx.core.net.JksOptions;
 import io.vertx.ext.web.Router;
 
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 public class Server extends AbstractVerticle {

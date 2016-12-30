@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.util.Objects;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 public class Certificate {

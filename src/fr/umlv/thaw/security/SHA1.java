@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 public class SHA1 {

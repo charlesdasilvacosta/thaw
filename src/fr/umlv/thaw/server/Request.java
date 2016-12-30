@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 public class Request {
@@ -65,7 +65,7 @@ public class Request {
      * @param consumer       method wich executed when http request is called
      * @param routingContext the routing context of actual request
      */
-    private void tryCatchSQLException(Request.CheckedSQLConsumer<RoutingContext> consumer, RoutingContext routingContext) {
+    private void tryCatchSQLException(CheckedSQLConsumer<RoutingContext> consumer, RoutingContext routingContext) {
         try {
             consumer.accept(routingContext);
         } catch (SQLException sqlException) {

@@ -3,7 +3,7 @@ package fr.umlv.thaw.security;
 import java.util.Random;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 public class RandonString {

@@ -8,13 +8,13 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 public class Main {
     public static void main(String[] args) {
-        Database database = new Database(Paths.get("ressources/thaw.db"));
-        Certificate cert = new Certificate(Paths.get("ressources/thawkeystore.jks"), "qwenty");
+        Database database = new Database(Paths.get("out/thaw.db"));
+        Certificate cert = new Certificate(Paths.get("out/thawkeystore.jks"), "qwenty");
         Server serv = new Server(database, cert, 4443);
 
         serv.getVertx().deployVerticle(serv);

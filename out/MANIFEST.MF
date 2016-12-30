@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.7
+Created-By: 9-ea+147 (Oracle Corporation)
+Built-By: qbeacco
+Built-Date: December 30 2016
+Main-Class: fr.umlv.thaw.main.Main
+Class-Path: /home/qbeacco/Documents/Universite/Java/thaw/libs/hamcrest
+ -core-1.3.jar /home/qbeacco/Documents/Universite/Java/thaw/libs/jacks
+ on-annotations-2.7.0.jar /home/qbeacco/Documents/Universite/Java/thaw
+ /libs/jackson-core-2.7.4.jar /home/qbeacco/Documents/Universite/Java/
+ thaw/libs/jackson-databind-2.7.4.jar /home/qbeacco/Documents/Universi
+ te/Java/thaw/libs/junit-4.12.jar /home/qbeacco/Documents/Universite/J
+ ava/thaw/libs/netty-buffer-4.1.5.Final.jar /home/qbeacco/Documents/Un
+ iversite/Java/thaw/libs/netty-codec-4.1.5.Final.jar /home/qbeacco/Doc
+ uments/Universite/Java/thaw/libs/netty-codec-dns-4.1.5.Final.jar /hom
+ e/qbeacco/Documents/Universite/Java/thaw/libs/netty-codec-http-4.1.5.
+ Final.jar /home/qbeacco/Documents/Universite/Java/thaw/libs/netty-cod
+ ec-http2-4.1.5.Final.jar /home/qbeacco/Documents/Universite/Java/thaw
+ /libs/netty-common-4.1.5.Final.jar /home/qbeacco/Documents/Universite
+ /Java/thaw/libs/netty-handler-4.1.5.Final.jar /home/qbeacco/Documents
+ /Universite/Java/thaw/libs/netty-handler-proxy-4.1.5.Final.jar /home/
+ qbeacco/Documents/Universite/Java/thaw/libs/netty-resolver-4.1.5.Fina
+ l.jar /home/qbeacco/Documents/Universite/Java/thaw/libs/netty-resolve
+ r-dns-4.1.5.Final.jar /home/qbeacco/Documents/Universite/Java/thaw/li
+ bs/netty-transport-4.1.5.Final.jar /home/qbeacco/Documents/Universite
+ /Java/thaw/libs/reactive-streams-1.0.0.jar /home/qbeacco/Documents/Un
+ iversite/Java/thaw/libs/rxjava-1.1.9.jar /home/qbeacco/Documents/Univ
+ ersite/Java/thaw/libs/sqlite-jdbc-3.14.2.1.jar /home/qbeacco/Document
+ s/Universite/Java/thaw/libs/vertx-auth-common-3.3.3.jar /home/qbeacco
+ /Documents/Universite/Java/thaw/libs/vertx-core-3.3.3.jar /home/qbeac
+ co/Documents/Universite/Java/thaw/libs/vertx-reactive-streams-3.3.3.j
+ ar /home/qbeacco/Documents/Universite/Java/thaw/libs/vertx-rx-java-3.
+ 3.3.jar /home/qbeacco/Documents/Universite/Java/thaw/libs/vertx-web-3
+ .3.3.jar /home/qbeacco/Documents/Universite/Java/thaw/classes
+

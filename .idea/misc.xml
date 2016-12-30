@@ -18,4 +18,5 @@
     <option name="OPEN_IN_BROWSER" value="true" />
     <option name="OPTION_INCLUDE_LIBS" value="false" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="9-ea" project-jdk-type="JavaSDK" />
 </project>

@@ -1,7 +1,7 @@
 package fr.umlv.thaw.database;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 class SQLRequest {

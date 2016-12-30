@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Thaw" default="all" basedir=".">
+
+    <property file="build.properties"/>
+
+    <!-- With this one, you can import your java path, if JAVA_HOME is not declared by this command ant -DJAVA9.dir=/path_to_jdk-9 -->
+    <property environment="env"/>
+    <property name="JAVA9.dir" value="${env.JAVA_HOME}"/>
+    <property name="javac9" location="${JAVA9.dir}/bin/javac"/>
+
+    <path id="classpath">
+        <fileset dir="${libs.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement path="${classes.dir}"/>
+    </path>
+
+    <target name="clean" description="Clean compiled files">
+        <delete dir="${classes.dir}"/>
+        <delete dir="${out.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${out.dir}"/>
+        <mkdir dir="${out.dir}/doc"/>
+
+    </target>
+
+    <target name="compil" description="Compil all sources">
+        <javac executable="${javac9}"
+               destdir="${classes.dir}"
+               fork="yes"
+               failonerror="true"
+               includeantruntime="false"
+               compiler="javac1.9">
+            <src path="${src.dir}"/>
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="javadoc" depends="compil" description="Generate Jdoc">
+        <javadoc sourcepath="${src.dir}" destdir="${jdoc.dir}" version="true">
+            <classpath refid="classpath"/>
+        </javadoc>
+    </target>
+
+    <target name="copy_ressources">
+        <copy todir="${out.dir}/">
+            <fileset file="${ressources.dir}/thaw.db"/>
+            <fileset file="${ressources.dir}/thawkeystore.jks"/>
+        </copy>
+    </target>
+
+    <target name="jar" depends="compil, copy_ressources" description="Build Jar file">
+        <pathconvert property="classpath.mf" pathsep=" ">
+            <path refid="classpath"/>
+        </pathconvert>
+        <tstamp/>
+        <manifest file="${out.dir}/MANIFEST.MF">
+            <attribute name="Built-By" value="${user.name}"/>
+            <attribute name="Built-Date" value="${TODAY}"/>
+            <attribute name="Main-Class" value="${main.class}"/>
+            <attribute name="Class-Path" value="${classpath.mf}"/>
+        </manifest>
+
+        <jar jarfile="${out.dir}/${app.name}-${app.version}.jar" manifest="${out.dir}/MANIFEST.MF" duplicate="preserve">
+            <fileset dir="${classes.dir}"/>
+            <zipfileset dir="${libs.dir}">
+                <include name="**/*.jar"/>
+                <exclude name="**/*javadoc.jar"/>
+                <exclude name="**/*sources.jar"/>
+            </zipfileset>
+        </jar>
+    </target>
+
+    <target name="all" depends="jar, javadoc"/>
+
+</project>

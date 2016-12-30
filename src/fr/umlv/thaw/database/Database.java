@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Quentin Béacco and Charles Dasilva Costa
+ * Created by Quentin Béacco and Charles Da Silva Costa
  * Thaw Project M1 Informatique
  */
 public class Database {
@@ -277,7 +277,7 @@ public class Database {
      * @return string contains date and time of database
      */
     public String getTimeDatabase() {
-        return new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new java.sql.Timestamp(System.currentTimeMillis()));
+        return new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new Timestamp(System.currentTimeMillis()));
 
     }
 
