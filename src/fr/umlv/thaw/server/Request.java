@@ -205,7 +205,7 @@ public class Request {
         );
 
         response.putHeader("content-type", "application/json").end(Json.encodePrettily(new JsonObject().put("alert", "Message added successfully")));
-        System.out.println("envoi sur channel " + routingContext.request().getParam("channelid"));
+
 
         vertx.eventBus().publish("channel" + Integer.parseInt(routingContext.request().getParam("channelid")),
                 new JsonObject().put("authorid", database.retrieveUserIdByToken(routingContext.request().getParam("token")))

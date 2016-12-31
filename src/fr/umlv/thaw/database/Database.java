@@ -36,7 +36,6 @@ public class Database {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
             statement = connection.createStatement();
-            System.out.println("Connection: ok");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             System.out.println("Connection: failed");
