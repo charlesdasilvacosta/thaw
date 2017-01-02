@@ -6,6 +6,7 @@
 1. Require
   JDK9 - 147
   Apache Ant
+  Add SSL exception to your Web Browser
 
 2. Compilation
 
