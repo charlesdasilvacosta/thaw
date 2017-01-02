@@ -4,9 +4,9 @@
 ## Université Paris-Est Marne la Vallée
 
 1. Require
-  JDK9 - 147
-  Apache Ant
-  Add SSL exception to your Web Browser
+  JDK9 - 147 </br>
+  Apache Ant </br>
+  Add SSL exception to your Web Browser </br>
 
 2. Compilation
 
